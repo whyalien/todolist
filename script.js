@@ -26,15 +26,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function addTask(taskText, isCompleted = false, creationDate) {
+    function addTask(taskText, isCompleted = false, creationDate= new Date() ) {
         const li = document.createElement('li');
         const taskContent = document.createElement('span');
         taskContent.className = 'task-content';
 
-const creationDate = new Date(
-  date.getFullYear(),
-  date.getMonth(),
-  date.getDate()
+//const creationDate = new Date(
+ // date.getFullYear(),
+  //date.getMonth(),
+  //date.getDate()
 );
 // Creates new Date object at midnight local time
 
