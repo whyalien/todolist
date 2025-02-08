@@ -151,7 +151,7 @@ button.complete-btn:hover {
 
 
 /* Mobile Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     .container {
         padding: 20px;
         width: 95%;
