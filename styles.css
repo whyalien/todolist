@@ -148,3 +148,46 @@ button.complete-btn {
 button.complete-btn:hover {
     background-color: #218838;
 }
+
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .lists {
+        flex-direction: column; /* Stack columns vertically */
+        gap: 15px;
+    }
+
+    .pending-tasks, .completed-tasks {
+        width: 100%;
+        flex: none; /* Remove flex equal width */
+    }
+
+    .input-section {
+        flex-direction: column;
+    }
+
+    #taskInput {
+        width: 100%;
+    }
+
+    #addTaskBtn {
+        width: 100%;
+        padding: 12px;
+    }
+
+    li {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    button.complete-btn {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+}
