@@ -26,22 +26,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function addTask(taskText, isCompleted = false, creationDate) {
+    function addTask(taskText, isCompleted = false, creationDate = new Date()) {
         const li = document.createElement('li');
         const taskContent = document.createElement('span');
         taskContent.className = 'task-content';
-
-const creationDate = new Date(
-  date.getFullYear(),
-  date.getMonth(),
-  date.getDate()
-);
-// Creates new Date object at midnight local time
-
-
-
-
-
 
         // Task text
         const taskTextSpan = document.createElement('span');
@@ -51,7 +39,10 @@ const creationDate = new Date(
         // Task date
         const dateSpan = document.createElement('span');
         dateSpan.className = 'task-date';
-        dateSpan.textContent = creationDate.toLocaleString(); // Removed "Created:"
+
+        // Format the date without time (e.g., "YYYY-MM-DD")
+        const formattedDate = creationDate.toISOString().split('T')[0];
+        dateSpan.textContent = formattedDate; // Display date without time
 
         taskContent.appendChild(taskTextSpan);
         taskContent.appendChild(dateSpan);
@@ -104,11 +95,11 @@ const creationDate = new Date(
         const tasks = [];
         document.querySelectorAll('#pendingList li, #completedList li').forEach(li => {
             const taskText = li.querySelector('.task-text').textContent;
-            const creationDate = new Date(li.querySelector('.task-date').textContent);
+            const creationDate = li.querySelector('.task-date').textContent; // Get the formatted date string
             tasks.push({
                 text: taskText,
                 completed: li.classList.contains('completed'),
-                creationDate: creationDate
+                creationDate: creationDate // Save the formatted date string
             });
         });
         localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -117,7 +108,9 @@ const creationDate = new Date(
     function loadTasks() {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         tasks.forEach(task => {
-            addTask(task.text, task.completed, new Date(task.creationDate));
+            // Parse the formatted date string back into a Date object
+            const creationDate = new Date(task.creationDate);
+            addTask(task.text, task.completed, creationDate);
         });
     }
 });
