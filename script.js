@@ -59,11 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // Complete/Undo button
         const completeBtn = document.createElement('button');
         completeBtn.className = 'complete-btn';
-        completeBtn.textContent = isCompleted ? 'Undo' : ' Done ';
+        completeBtn.textContent = isCompleted ? ' Undo ' : ' Done ';
         completeBtn.addEventListener('click', function () {
             li.classList.toggle('completed');
             if (li.classList.contains('completed')) {
-                completeBtn.textContent = 'Undo';
+                completeBtn.textContent = ' Undo ';
                 moveTask(li, false); // Move to completed list
             } else {
                 completeBtn.textContent = ' Done ';
